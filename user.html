@@ -1,0 +1,27 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>安排 NFT 上架</title>
+</head>
+<body>
+  <h1>安排 NFT 上架</h1>
+  <button onclick="scheduleListing()">安排 24 小时后上架</button>
+
+  <script>
+    async function scheduleListing() {
+      const response = await fetch('http://localhost:3001/schedule-listing', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          tokenAddress: '0x2953399124F0cBB46d2CbACD8A89cF0599974963',
+          tokenId: '107233589994877603594637555849898546390620619309678010908335661212012036227073',
+          listingAmount: '0.003'
+        })
+      });
+      const data = await response.json();
+      alert(data.message);
+    }
+  </script>
+</body>
+</html>
